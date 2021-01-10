@@ -1,1 +1,1 @@
-# lighthiuse
+# lighthouse
