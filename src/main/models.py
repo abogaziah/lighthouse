@@ -1,3 +1,7 @@
 from django.db import models
 
-# Create your models here.
+class missing_person(models.Model):
+    pass
+
+class contact_person(models.Model):
+    pass
