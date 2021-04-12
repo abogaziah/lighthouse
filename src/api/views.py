@@ -1,13 +1,13 @@
-from rest_framework import viewsets, status
+from rest_framework import status, viewsets
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .models import MissingPerson, ContactPerson
-from .serializers import MissingPersonSerializer, ContactPersonSerializer
+from .models import ContactPerson, MissingPerson
+from .serializers import ContactPersonSerializer, MissingPersonSerializer
 
 
 class MissingPersonViewSet(viewsets.ViewSet):
-    def view(self, request):
+    def show(self, request):
         missing = MissingPerson.objects.all()
         serializer = MissingPersonSerializer(missing, many=True)
         return Response(serializer.data)
