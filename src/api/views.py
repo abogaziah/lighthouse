@@ -42,5 +42,6 @@ class SearchView(APIView):
         result = classifier.find(request.data['image'])
         response = None
         if not result:
-            response = Response(status=status.HTTP_204_NO_CONTENT)
+            result= {"result":"not found"}
+            response = Response(result, status=status.HTTP_204_NO_CONTENT)
         return response
