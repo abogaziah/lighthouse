@@ -4,7 +4,7 @@ from rest_framework.views import APIView
 
 from .models import ContactPerson, MissingPerson
 from .serializers import ContactPersonSerializer, MissingPersonSerializer
-
+from .classifier.classifier import ImageClassifier
 
 class MissingPersonViewSet(viewsets.ViewSet):
     def show(self, request):
@@ -34,3 +34,13 @@ class MissingPersonViewSet(viewsets.ViewSet):
         missing_person = MissingPerson.objects.get(id=pk)
         missing_person.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class SearchView(APIView):
+    def post(self,request):
+        classifier = ImageClassifier()
+        result = classifier.find(request.data['image'])
+        response = None
+        if not result:
+            response = Response(status=status.HTTP_204_NO_CONTENT)
+        return response

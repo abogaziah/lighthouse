@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import MissingPersonViewSet
+from .views import * 
 
 urlpatterns = [
     path('missing', MissingPersonViewSet.as_view({
@@ -12,4 +12,5 @@ urlpatterns = [
         'put': 'update',
         'delete': 'destroy'
     })),
+    path('find',SearchView.as_view())
 ]
